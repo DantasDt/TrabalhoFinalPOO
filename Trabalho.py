@@ -51,7 +51,6 @@ class Competicao(Base):
 
 Base.metadata.create_all(engine)
 
-
 if not session.query(Time).first():
 
     Nasa = Time(nome="Nasa FC", AnoFundacao=2025)
@@ -71,12 +70,12 @@ if not session.query(Time).first():
         Jogador(nome="Luiz Fome", posicao="Ala", idade=18, time=Vsfd),
         Jogador(nome="Iam", posicao="Atacante", idade=19, time=Vsfd),
 
-        Jogador(nome="Caio Pinto", posicao="Goleiro", idade=67, time=Fc67),
+        Jogador(nome="Caio Braga", posicao="Goleiro", idade=67, time=Fc67),
         Jogador(nome="Alfredo dos Anzois", posicao="Fixo", idade=67, time=Fc67),
         Jogador(nome="Helio de Janeiro", posicao="Ala", idade=67, time=Fc67),
         Jogador(nome="Joao Goulart", posicao="Ala", idade=67, time=Fc67),
         Jogador(nome="Six Sevenaldo", posicao="Atacante", idade=67, time=Fc67)
-    ]
+]
 
     competicao1 = Competicao(nome="Copa Quadra Aberta", temporada=2026)
     competicao2 = Competicao(nome="Interclasse", temporada=2026)
@@ -97,6 +96,7 @@ if not session.query(Time).first():
 time = session.query(Time).filter_by(nome="Nasa FC").first()
 
 if time:
+    print("")
     print("Time:", time.nome)
 
     for jogador in time.jogadores:
@@ -105,26 +105,39 @@ if time:
 time = session.query(Time).filter_by(nome="Vsfd FC").first()
 
 if time:
+    print("")
     print("Time:", time.nome)
-
+    
     for jogador in time.jogadores:
         print(jogador.nome, "-", jogador.posicao)
 
 time = session.query(Time).filter_by(nome="67 Fc").first()
 
 if time:
+    print("")
     print("Time:", time.nome)
-
+    
     for jogador in time.jogadores:
         print(jogador.nome, "-", jogador.posicao)
 
 competicao = session.query(Competicao).filter_by(nome="Copa Quadra Aberta").first()
 
 if competicao:
+    print("")
     print("Competicao:", competicao.nome)
 
     for time in competicao.times:
         print(time.nome, "-", time.AnoFundacao)
 
+
+times = session.query(Time).all()
+
+for time in times:
+    print("")
+    print("Time:", time.nome)
+    print("Competições:")
+
+    for competicao in time.competicoes:
+        print(competicao.nome, "Temporada:", competicao.temporada)
 
 session.close()
