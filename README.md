@@ -4,3 +4,4 @@
 
 [Link vídeo de apresentação](https://www.youtube.com/watch?v=VnFCCVZghzQ)
 
+Integrantes: Estevão Dantas, Pedro Henrique Veicir, Luan Thomaz e Luiz Otávio
